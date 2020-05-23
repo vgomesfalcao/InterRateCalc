@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a75a2409efd0107a72d45408da46876e43e15332fc7e919feefb6a9524122e3b"
+            "sha256": "a4275436809a7e2913b360dd75064953a79bf13d255d76de359692e861a213ef"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.8"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -15,8 +15,7 @@
             }
         ]
     },
-    "default": {},
-    "develop": {
+    "default": {
         "pyyaml": {
             "hashes": [
                 "sha256:06a0d7ba600ce0b2d2fe2e78453a470b5a6e000a985dd4a4e54e436cc36b0e97",
@@ -34,5 +33,6 @@
             "index": "pypi",
             "version": "==5.3.1"
         }
-    }
+    },
+    "develop": {}
 }

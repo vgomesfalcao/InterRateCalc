@@ -1,5 +1,5 @@
 import yaml
-arq = 'dados.bin'
+arq = '../db/dados.bin'
 class Cartao:
     cartoes = []
     vendas = {'Debito': 18004.89, '1x':11360.47, '2x':1754.43,'3x':1001.92}
