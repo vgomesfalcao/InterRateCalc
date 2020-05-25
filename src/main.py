@@ -1,6 +1,6 @@
-from cartao import Cartao
+from card import Card
 n=0
-Cartao.ler()
+Card.read()
 
 while(not(n == -1)):
     
@@ -14,21 +14,21 @@ while(not(n == -1)):
     sair = '-1 - Sair\n'
     n = int(input(listar+add+exc+sim+sal+ler+sim2+sair))
     if(n == 1):
-        for op in Cartao.cartoes:
+        for op in Card.cards:
             print(op)
     elif(n == 2):
-        Cartao.adiciona_operadora()
+        Card.add_company()
     elif(n == 3):
-        print(Cartao.excluir_operadora())
+        Card.del_company()
     elif(n == 4):
         vlr = float(input('Digite o valor:\n'))
         num_parc = int(input('Digite num_parc:\n'))
-        for op in Cartao.cartoes:
+        for op in Card.cards:
             print(f'{op.operadora.upper()} : R${op.sim_vlr_credito(vlr,num_parc):.2f}'.replace('.',','))
     elif(n == 5):
-        Cartao.salvar()
+        Card.save()
     elif(n == 6):
-        Cartao.ler()
+        Card.read()
     elif(n == 7):
-        Cartao.simular()
+        Card.simular()
     print('\n\n')
