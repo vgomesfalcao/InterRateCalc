@@ -58,17 +58,20 @@ class Cartao:
         alug = f'Aluguel: R${self.__aluguel:.4}\n'
         comp = f'Compra: R${self.__compra:.4}\n'
         return nome + deb + credv + cred1 + credn + ant + alug + comp
+    
     @classmethod
     def salvar(cls):
         with open(arq,'w') as arquivo:
             dado = yaml.dump(cls.cartoes)
             arquivo.write(dado)
+            
     @classmethod
     def ler(cls):
         with open(arq,'r') as db:
             txt = yaml.load(db,Loader=yaml.FullLoader)
             if txt != None:
                 cls.cartoes = txt
+                
     @classmethod
     def excluir_operadora(cls):
         if cls.cartoes == []:
@@ -86,10 +89,10 @@ class Cartao:
             if (operadora.upper() == op.operadora):
                 return op
         return False
+    
     @classmethod
     def simular(cls):
         for op in cls.cartoes:
-            
             deb = cls.vendas['Debito'] * op.__debito
             x1 = cls.vendas['1x'] * op.__credito_avista
             x2 = ((cls.vendas['2x']/2) * op.__credito_1x) + ((cls.vendas['2x']/2)* op.__credito_nx)
@@ -99,6 +102,7 @@ class Cartao:
             ant2 = (cls.vendas['2x'] - x2)*op.__tx_antecipacao*2
             ant3 = (cls.vendas['3x'] - x3)*op.__tx_antecipacao*3
             ant = ant1 + ant2 + ant3
+            
             print(op.__operadora)
             debi = f'Debito: R$ {deb:.2f}\n'
             cred1x = f'Credito à Vista: R$ {x1:.2f}\n'
@@ -108,4 +112,5 @@ class Cartao:
             com = f'Valor Compra mensal: R${compra:.2f}\n'
             ante = f'Antecipação: R$ {ant:.2f}\n'
             total = f'Total: R$ {deb+x1+x2+x3+compra+op.__aluguel+ant:.2f}\n'
+            
             print((debi + cred1x + cred2x + cred3x + ante + alu + com + total).replace('.',','))
